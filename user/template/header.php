@@ -4,6 +4,11 @@ session_start();
 
 if (!isset($_SESSION['role'])) {
     header("Location: ../index.php");
+} else {
+    if ($_SESSION['role'] != 'user') {
+        http_response_code(403);
+        die('Forbidden');
+    }
 }
 ?>
 

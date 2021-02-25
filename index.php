@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (isset($_SESSION['role'])) {
+  header("Location: user/index.php");
+}
+?>
 <!doctype html>
 <html lang="en">
 
