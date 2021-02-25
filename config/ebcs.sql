@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2021 at 03:02 PM
+-- Generation Time: Feb 25, 2021 at 06:48 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.13
 
@@ -139,6 +139,28 @@ INSERT INTO `masalah_kenderaan` (`id`, `jenis_masalah`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_status`
+--
+
+CREATE TABLE `tbl_status` (
+  `id` int(11) NOT NULL,
+  `status` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_status`
+--
+
+INSERT INTO `tbl_status` (`id`, `status`) VALUES
+(1, 'Menunggu semakan'),
+(2, 'Terima'),
+(3, 'Selesai'),
+(4, 'Dibatalkan'),
+(5, 'Untuk Dibayar');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tempahan_servis`
 --
 
@@ -160,11 +182,12 @@ CREATE TABLE `tempahan_servis` (
 --
 
 INSERT INTO `tempahan_servis` (`id`, `id_user`, `nama`, `ic`, `no_telefon`, `no_kenderaan`, `jenis_kenderaan`, `jenis_masalah`, `tarikh_masa_tempahan`, `status`) VALUES
-(2, 7, 'Aidiel Daniel Bin Dermawan', '970313145057', '0182449921', 'RAG3640', '20', '3', '2021-02-24 12:00', 'Terima'),
-(4, 7, 'Aidiel Daniel', '970313145057', '0182449921', 'RAG36402323', '1', '6', '2021-02-28 12:00', 'Menunggu semakan'),
-(5, 7, 'Aidiel Daniel', '970313145057', '0182449921', 'RAG36402323', '10', '3', '2021-02-25 12:00', 'Menunggu semakan'),
-(6, 7, 'Aidiel Daniel', '970313145057', '0182449921', 'RAG3640', '1', '9', '2021-02-25 12:00', 'Menunggu semakan'),
-(7, 7, 'Aidiel Daniel', '970313145057', '0182449921', 'RAG3640', '2', '3', '2021-02-26 12:00', 'Menunggu semakan');
+(2, 7, 'Aidiel Daniel Bin Dermawan', '970313145057', '0182449921', 'RAG3640', '2', '3', '2021-02-26 12:00', '1'),
+(4, 7, 'Aidiel Daniel', '970313145057', '0182449921', 'RAG36402323', '1', '6', '2021-02-28 12:00', '4'),
+(5, 7, 'Aidiel Daniel', '970313145057', '0182449921', 'RAG36402323', '10', '3', '2021-02-25 12:00', '2'),
+(6, 7, 'Aidiel Daniel', '970313145057', '0182449921', 'RAG3640', '1', '9', '2021-02-25 12:00', '4'),
+(7, 7, 'Aidiel Daniel', '970313145057', '0182449921', 'RAG3640', '2', '3', '2021-02-26 12:00', '1'),
+(8, 7, 'Aidiel Daniel', '970313145057', '0123456789', 'RAG36402323', '2', '2', '2021-02-27 12:00', '1');
 
 -- --------------------------------------------------------
 
@@ -215,6 +238,12 @@ ALTER TABLE `masalah_kenderaan`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_status`
+--
+ALTER TABLE `tbl_status`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tempahan_servis`
 --
 ALTER TABLE `tempahan_servis`
@@ -249,10 +278,16 @@ ALTER TABLE `masalah_kenderaan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
+-- AUTO_INCREMENT for table `tbl_status`
+--
+ALTER TABLE `tbl_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `tempahan_servis`
 --
 ALTER TABLE `tempahan_servis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
