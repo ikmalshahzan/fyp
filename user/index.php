@@ -12,13 +12,15 @@ include 'config.php';
         <div class="container mt-5 mb-5">
             <ul class="timeline">
                 <?php
-                $sql = "SELECT t.id, t.no_kenderaan, t.tarikh_masa_tempahan, t.status, j.nama_kenderaan, m.jenis_masalah
+                $sql = "SELECT t.id, t.no_kenderaan, t.status as status_t, t.tarikh_masa_tempahan, j.nama_kenderaan, m.jenis_masalah, s.status
                 FROM tempahan_servis as t
                 JOIN jenis_kenderaan as j
                 ON t.jenis_kenderaan = j.id
                 JOIN masalah_kenderaan as m
                 ON t.jenis_masalah = m.id
-                WHERE id_user = " . $_SESSION['id'] . "";
+                JOIN tbl_status as s
+                ON t.status = s.id
+                WHERE t.status = 1 OR t.status = 2 AND id_user = " . $_SESSION['id'] . "";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     // output data of each row

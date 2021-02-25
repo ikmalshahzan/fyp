@@ -20,13 +20,15 @@ include 'config.php';
                     <input type="text" class="form-control" name="ic">
                 </div>
             </div>
-            <div class="form-group">
-                <label for="phone">NO TELEFON</label>
-                <input type="text" class="form-control" name="phone">
-            </div>
-            <div class="form-group">
-                <label for="vehicle_no">NO KENDERAAN</label>
-                <input type="text" class="form-control" name="vehicle_no">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="phone">NO TELEFON</label>
+                    <input type="text" class="form-control" name="phone" value="<?= $_SESSION['mobilenumber'] ?>" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="vehicle_no">NO KENDERAAN</label>
+                    <input type="text" class="form-control" name="vehicle_no">
+                </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">

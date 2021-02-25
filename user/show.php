@@ -1,12 +1,12 @@
 <?php
-$title = 'TEMPAHAN SERVIS';
+$title = 'BUTIRAN TEMPAHAN SERVIS';
 include 'template/header.php';
 include 'config.php';
 ?>
 
 <div class="card">
     <div class="card-header">
-        <h2 class="card-title">BORANG TEMPAHAN SERVIS</h2>
+        <h2 class="card-title">BUTIRAN TEMPAHAN SERVIS</h2>
     </div>
     <div class="card-body">
         <?php
@@ -34,6 +34,7 @@ include 'config.php';
         while ($row = $result->fetch_assoc()) {
         ?>
             <form method="POST" action="crud.php">
+                <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="name">NAMA</label>
@@ -41,16 +42,18 @@ include 'config.php';
                     </div>
                     <div class="form-group col-md-6">
                         <label for="ic">IC/PASSPORT</label>
-                        <input type="text" class="form-control" name="ic" value="<?= $row['ic'] ?>">
+                        <input type="text" class="form-control" name="ic" value="<?= $row['ic'] ?>" readonly>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="phone">NO TELEFON</label>
-                    <input type="text" class="form-control" name="phone" value="<?= $row['no_telefon'] ?>">
-                </div>
-                <div class="form-group">
-                    <label for="vehicle_no">NO KENDERAAN</label>
-                    <input type="text" class="form-control" name="vehicle_no" value="<?= $row['no_kenderaan'] ?>">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="phone">NO TELEFON</label>
+                        <input type="text" class="form-control" name="phone" value="<?= $row['no_telefon'] ?>" readonly>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="vehicle_no">NO KENDERAAN</label>
+                        <input type="text" class="form-control" name="vehicle_no" value="<?= $row['no_kenderaan'] ?>">
+                    </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -101,7 +104,7 @@ include 'config.php';
                         <input type="text" class="form-control" id="masa" name="time" value="<?= $row['tarikh_masa_tempahan'] ?>">
                     </div>
                 </div>
-                <button type=" submit" name="create" class="btn btn-primary">Kemaskini</button>
+                <button type=" submit" name="update" class="btn btn-primary">Kemaskini</button>
             </form>
         <?php
         }

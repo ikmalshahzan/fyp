@@ -15,7 +15,7 @@ if (isset($_POST['create'])) {
     $problem = $_POST['problem'];
     $time = $_POST['time'];
 
-    $sql = "INSERT INTO tempahan_servis(id_user, nama, ic, no_telefon, no_kenderaan, jenis_kenderaan, jenis_masalah, tarikh_masa_tempahan, status) VALUES ('" . $_SESSION['id'] . "','" . $name . "','" . $ic . "','" . $phone . "','" . $vehicle_no . "','" . $vehicle_type . "','" . $problem . "','" . $time . "', 'Menunggu semakan')";
+    $sql = "INSERT INTO tempahan_servis(id_user, nama, ic, no_telefon, no_kenderaan, jenis_kenderaan, jenis_masalah, tarikh_masa_tempahan, status) VALUES ('" . $_SESSION['id'] . "','" . $name . "','" . $ic . "','" . $phone . "','" . $vehicle_no . "','" . $vehicle_type . "','" . $problem . "','" . $time . "', 1)";
     if ($conn->query($sql) === TRUE) {
         $_SESSION['success'] = "New record created successfully";
         header("Location: create.php");
@@ -25,12 +25,32 @@ if (isset($_POST['create'])) {
     }
 }
 
+
+//KEMASKINI TEMPAHAN
+if (isset($_POST['update'])) {
+    $id = $_POST['id'];
+    $vehicle_no = $_POST['vehicle_no'];
+    $vehicle_type = $_POST['vehicle_type'];
+    $problem = $_POST['problem'];
+    $time = $_POST['time'];
+
+    $sql = "UPDATE tempahan_servis SET no_kenderaan='" . $vehicle_no . "', jenis_kenderaan='" . $vehicle_type . "', jenis_masalah='" . $problem . "', tarikh_masa_tempahan='" . $time . "', status=1 WHERE id=2";
+    if ($conn->query($sql) === TRUE) {
+        $_SESSION['success'] = "Record updated successfully";
+        header("Location: show.php?id=$id");
+    } else {
+        $_SESSION['error'] =  "Error: " . $sql . "<br>" . $conn->error;
+        header("Location: show.php?id=$id");
+    }
+}
+
 //BATALKAN TEMPAHAN
 if (isset($_GET['id'])) {
-    $sql = "DELETE FROM tempahan_servis WHERE id='" . $_GET['id'] . "'";
+
+    $sql = "UPDATE tempahan_servis SET status=4 WHERE id='" . $_GET['id'] . "'";
     if ($conn->query($sql) === TRUE) {
         $_SESSION['success'] = "Tempahan anda dibatalkan";
-        header("Location: index.php");
+        header("Location: show_all.php");
     } else {
         $_SESSION['error'] =  "Error: " . $sql . "<br>" . $conn->error;
         header("Location: create.php");
