@@ -1,18 +1,16 @@
-<?php 
+<?php
 
-    // Enable us to use Headers
-    ob_start();
+// Enable us to use Headers
+ob_start();
 
-    // Set sessions
-    if(!isset($_SESSION)) {
-        session_start();
-    }
+// Set sessions
+if (!isset($_SESSION)) {
+    session_start();
+}
 
-    $hostname = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "carservice";
-    
-    $connection = mysqli_connect($hostname, $username, $password, $dbname) or die("Database connection not established.")
+$hostname = "localhost";
+$username = "root";
+$password = "";
+$dbname = "ebcs";
 
-?>
+$connection = mysqli_connect($hostname, $username, $password, $dbname) or die("Database connection not established.");

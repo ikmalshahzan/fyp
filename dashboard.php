@@ -24,8 +24,8 @@
                         <?php echo $_SESSION['lastname']; ?></h6>
                     <p class="card-text">Email address: <?php echo $_SESSION['email']; ?></p>
                     <p class="card-text">Mobile number: <?php echo $_SESSION['mobilenumber']; ?></p>
-                    
-                    <a class="btn btn-danger btn-block" href="logout.php">Log out</a>
+
+                    <a class="btn btn-danger btn-block" href="controllers/logout.php">Log out</a>
                 </div>
             </div>
         </div>
