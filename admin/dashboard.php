@@ -41,7 +41,7 @@ include 'config/db.php';
                                 ON t.jenis_masalah = m.id
                                 JOIN tbl_status as s
                                 ON t.status = s.id
-                                WHERE t.status = 1 OR t.status = 2";
+                                WHERE t.status = 1 OR t.status = 2 OR t.status = 5";
                             $result = $conn->query($sql);
                             if ($result->num_rows > 0) {
                                 // output data of each row
@@ -56,7 +56,7 @@ include 'config/db.php';
                                         <td><?= $row['status'] ?></td>
                                         <td>
                                             <?php
-                                            if ($row['status_t'] == 1) {
+                                            if ($row['status_t'] == 1 || $row['status_t'] == 2 || $row['status_t'] == 5) {
                                             ?>
                                                 <a href="show.php?id=<?= $row['id'] ?>" class="btn btn-warning" title="Sunting"><i class="fas fa-eye"></i></a>
                                             <?php

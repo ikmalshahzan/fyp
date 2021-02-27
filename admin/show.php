@@ -2,14 +2,28 @@
 $title = "Butiran Tempahan";
 
 include 'template/header.php';
+
 include 'config/db.php';
+
+if (isset($_POST['update'])) {
+    $status = $_POST['status'];
+    $id =  $_POST['id'];
+
+    $sql = "UPDATE tempahan_servis SET  status= '" . $status . "' WHERE id=$id";
+    if ($conn->query($sql) === TRUE) {
+        $_SESSION['success'] = "Record updated successfully";
+    } else {
+        $_SESSION['error'] =  "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+
 ?>
 
 <?php
 
 $id = $_GET['id'];
 
-$sql = "SELECT t.id, t.nama, t.no_kenderaan, t.ic, t.no_telefon, t.tarikh_masa_tempahan, j.nama_kenderaan, m.jenis_masalah, s.status
+$sql = "SELECT t.id, t.no_tempahan, t.nama, t.no_kenderaan, t.ic, t.no_telefon, t.tarikh_masa_tempahan, j.nama_kenderaan, m.jenis_masalah, s.status
 FROM tempahan_servis as t
 JOIN jenis_kenderaan as j
 ON t.jenis_kenderaan = j.id
@@ -25,7 +39,7 @@ while ($row = $result->fetch_assoc()) {
     <div class="container">
         <div class="card">
             <div class="card-header">
-                Booking Number:
+                Booking Number: <b><?= $row['no_tempahan'] ?></b>
                 <div class="float-right">
                     Tarikh Tempahan: <b><?= $row['tarikh_masa_tempahan'] ?></b> | Status: <b><?= $row['status'] ?></b>
                     <!-- Button trigger modal -->
@@ -74,32 +88,35 @@ while ($row = $result->fetch_assoc()) {
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <label for="problem">JENIS MASALAH KENDERAAN <i class="fa fa-question-circle-o" aria-hidden="true" title="Tekan CTRL dan klik jenis masalah kenderaan anda."></i></label>
-                    <select name="problem" class="form-control">
-                        <option selected disabled>Pilih Satu</option>
-                        <?php
-                        $sql3 = "SELECT * FROM tbl_status";
-                        $result3 = $conn->query($sql3);
-                        while ($row3 = $result3->fetch_assoc()) {
-                            if ($row['status'] ==  $row3['status']) {
-                        ?>
-                                <option value="<?= $row3['id'] ?>" style="color:red" selected><?= $row3['status'] ?></option>
-
+                <form action="" method="POST">
+                    <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                    <div class="modal-body">
+                        <label for="status">Status</label>
+                        <select name="status" class="form-control">
+                            <option selected disabled>Pilih Satu</option>
                             <?php
-                            } else {
+                            $sql3 = "SELECT * FROM tbl_status";
+                            $result3 = $conn->query($sql3);
+                            while ($row3 = $result3->fetch_assoc()) {
+                                if ($row['status'] ==  $row3['status']) {
                             ?>
-                                <option value="<?= $row3['id'] ?>"><?= $row3['status'] ?></option>
-                        <?php
+                                    <option value="<?= $row3['id'] ?>" style="color:red" selected><?= $row3['status'] ?></option>
+
+                                <?php
+                                } else {
+                                ?>
+                                    <option value="<?= $row3['id'] ?>"><?= $row3['status'] ?></option>
+                            <?php
+                                }
                             }
-                        }
-                        ?>
-                    </select>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                            ?>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="Submit" name="update" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
