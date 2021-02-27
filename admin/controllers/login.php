@@ -1,7 +1,7 @@
 <?php
 
 // Database connection
-include('config/db.php');
+include('../config/db.php');
 
 global $wrongPwdErr, $accountNotExistErr, $emailPwdErr, $verificationRequiredErr, $email_empty_err, $pass_empty_err;
 

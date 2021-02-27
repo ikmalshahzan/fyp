@@ -6,6 +6,8 @@ include 'config.php';
 
 //Buat TEMPAHAN
 if (isset($_POST['create'])) {
+    date_default_timezone_set('Asia/Kuala_Lumpur');
+    $no_tempahan = 'EBCS' . date("dmyHis");
     $name = $_POST['name'];
     $user_id = $_SESSION['id'];
     $ic = $_POST['ic'];
@@ -15,7 +17,7 @@ if (isset($_POST['create'])) {
     $problem = $_POST['problem'];
     $time = $_POST['time'];
 
-    $sql = "INSERT INTO tempahan_servis(id_user, nama, ic, no_telefon, no_kenderaan, jenis_kenderaan, jenis_masalah, tarikh_masa_tempahan, status) VALUES ('" . $_SESSION['id'] . "','" . $name . "','" . $ic . "','" . $phone . "','" . $vehicle_no . "','" . $vehicle_type . "','" . $problem . "','" . $time . "', 1)";
+    $sql = "INSERT INTO tempahan_servis(no_tempahan, id_user, nama, ic, no_telefon, no_kenderaan, jenis_kenderaan, jenis_masalah, tarikh_masa_tempahan, status) VALUES ('" . $no_tempahan . "','" . $_SESSION['id'] . "','" . $name . "','" . $ic . "','" . $phone . "','" . $vehicle_no . "','" . $vehicle_type . "','" . $problem . "','" . $time . "', 1)";
     if ($conn->query($sql) === TRUE) {
         $_SESSION['success'] = "New record created successfully";
         header("Location: create.php");

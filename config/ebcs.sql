@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2021 at 06:48 PM
+-- Generation Time: Feb 27, 2021 at 02:32 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.13
 
@@ -166,6 +166,7 @@ INSERT INTO `tbl_status` (`id`, `status`) VALUES
 
 CREATE TABLE `tempahan_servis` (
   `id` int(11) NOT NULL,
+  `no_tempahan` varchar(255) NOT NULL,
   `id_user` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `ic` varchar(255) NOT NULL,
@@ -181,13 +182,8 @@ CREATE TABLE `tempahan_servis` (
 -- Dumping data for table `tempahan_servis`
 --
 
-INSERT INTO `tempahan_servis` (`id`, `id_user`, `nama`, `ic`, `no_telefon`, `no_kenderaan`, `jenis_kenderaan`, `jenis_masalah`, `tarikh_masa_tempahan`, `status`) VALUES
-(2, 7, 'Aidiel Daniel Bin Dermawan', '970313145057', '0182449921', 'RAG3640', '2', '3', '2021-02-26 12:00', '1'),
-(4, 7, 'Aidiel Daniel', '970313145057', '0182449921', 'RAG36402323', '1', '6', '2021-02-28 12:00', '4'),
-(5, 7, 'Aidiel Daniel', '970313145057', '0182449921', 'RAG36402323', '10', '3', '2021-02-25 12:00', '2'),
-(6, 7, 'Aidiel Daniel', '970313145057', '0182449921', 'RAG3640', '1', '9', '2021-02-25 12:00', '4'),
-(7, 7, 'Aidiel Daniel', '970313145057', '0182449921', 'RAG3640', '2', '3', '2021-02-26 12:00', '1'),
-(8, 7, 'Aidiel Daniel', '970313145057', '0123456789', 'RAG36402323', '2', '2', '2021-02-27 12:00', '1');
+INSERT INTO `tempahan_servis` (`id`, `no_tempahan`, `id_user`, `nama`, `ic`, `no_telefon`, `no_kenderaan`, `jenis_kenderaan`, `jenis_masalah`, `tarikh_masa_tempahan`, `status`) VALUES
+(1, 'EBCS270221212114', 7, 'Aidiel Daniel', '970313145057', '0123456789', 'RAG3640', '2', '1', '2021-02-03 12:00', '1');
 
 -- --------------------------------------------------------
 
@@ -247,7 +243,8 @@ ALTER TABLE `tbl_status`
 -- Indexes for table `tempahan_servis`
 --
 ALTER TABLE `tempahan_servis`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `no_tempahan` (`no_tempahan`);
 
 --
 -- Indexes for table `users`
@@ -287,7 +284,7 @@ ALTER TABLE `tbl_status`
 -- AUTO_INCREMENT for table `tempahan_servis`
 --
 ALTER TABLE `tempahan_servis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`

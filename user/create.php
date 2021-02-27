@@ -13,27 +13,27 @@ include 'config.php';
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="name">NAMA</label>
-                    <input type="text" class="form-control" name="name" value="<?= $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] ?>" readonly>
+                    <input type="text" class="form-control" name="name" value="<?= $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] ?>" readonly required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="ic">IC/PASSPORT</label>
-                    <input type="text" class="form-control" name="ic">
+                    <input type="text" class="form-control" name="ic" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="phone">NO TELEFON</label>
-                    <input type="text" class="form-control" name="phone" value="<?= $_SESSION['mobilenumber'] ?>" readonly>
+                    <input type="text" class="form-control" name="phone" value="<?= $_SESSION['mobilenumber'] ?>" readonly required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="vehicle_no">NO KENDERAAN</label>
-                    <input type="text" class="form-control" name="vehicle_no">
+                    <input type="text" class="form-control" name="vehicle_no" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="vehicle_type">JENIS KENDERAAN</label>
-                    <select name="vehicle_type" class="form-control">
+                    <select name="vehicle_type" class="form-control" required>
                         <option selected disabled>Pilih Satu</option>
                         <?php
                         $sql2 = "SELECT * FROM jenis_kenderaan";
@@ -57,7 +57,7 @@ include 'config.php';
                 </div>
                 <div class="form-group col-md-6">
                     <label for="problem">JENIS MASALAH KENDERAAN <i class="fa fa-question-circle-o" aria-hidden="true" title="Tekan CTRL dan klik jenis masalah kenderaan anda."></i></label>
-                    <select name="problem" class="form-control">
+                    <select name="problem" class="form-control" required>
                         <option selected disabled>Pilih Satu</option>
                         <?php
                         $sql = "SELECT * FROM masalah_kenderaan";
@@ -84,7 +84,7 @@ include 'config.php';
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputEmail4"><b>TARIKH DAN MASA TEMPAHAN SERVIS</b></label>
-                    <input type="text" class="form-control" id="masa" name="time">
+                    <input type="text" class="form-control" id="masa" name="time" required>
                 </div>
             </div>
             <button type="submit" name="create" class="btn btn-primary">Tempah!</button>

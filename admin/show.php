@@ -27,7 +27,11 @@ while ($row = $result->fetch_assoc()) {
             <div class="card-header">
                 Booking Number:
                 <div class="float-right">
-                    Status: <b><?= $row['status'] ?></b>
+                    Tarikh Tempahan: <b><?= $row['tarikh_masa_tempahan'] ?></b> | Status: <b><?= $row['status'] ?></b>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary btn-sm" title="sunting" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fas fa-edit    "></i>
+                    </button>
                 </div>
             </div>
             <ul class="list-group list-group-flush">
@@ -60,10 +64,47 @@ while ($row = $result->fetch_assoc()) {
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tukar status</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label for="problem">JENIS MASALAH KENDERAAN <i class="fa fa-question-circle-o" aria-hidden="true" title="Tekan CTRL dan klik jenis masalah kenderaan anda."></i></label>
+                    <select name="problem" class="form-control">
+                        <option selected disabled>Pilih Satu</option>
+                        <?php
+                        $sql3 = "SELECT * FROM tbl_status";
+                        $result3 = $conn->query($sql3);
+                        while ($row3 = $result3->fetch_assoc()) {
+                            if ($row['status'] ==  $row3['status']) {
+                        ?>
+                                <option value="<?= $row3['id'] ?>" style="color:red" selected><?= $row3['status'] ?></option>
+
+                            <?php
+                            } else {
+                            ?>
+                                <option value="<?= $row3['id'] ?>"><?= $row3['status'] ?></option>
+                        <?php
+                            }
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 <?php
 }
-
 ?>
-
 
 <?php include 'template/footer.php'; ?>

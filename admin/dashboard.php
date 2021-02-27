@@ -58,12 +58,7 @@ include 'config/db.php';
                                             <?php
                                             if ($row['status_t'] == 1) {
                                             ?>
-                                                <a href="show.php?id=<?= $row['id'] ?>" class="btn btn-warning" title="Sunting"><i class="fas fa-edit"></i></a>
-                                                <a href="crud.php?id=<?= $row['id'] ?>" class="btn btn-danger" title=Batal><i class="fas fa-window-close"></i></a>
-                                            <?php
-                                            } elseif ($row['status_t'] == 2) {
-                                            ?>
-                                                <a href="crud.php?id=<?= $row['id'] ?>" class="btn btn-danger" title=Batal><i class="fas fa-window-close"></i></a>
+                                                <a href="show.php?id=<?= $row['id'] ?>" class="btn btn-warning" title="Sunting"><i class="fas fa-eye"></i></a>
                                             <?php
                                             }
                                             ?>
