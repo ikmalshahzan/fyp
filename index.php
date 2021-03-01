@@ -95,7 +95,7 @@ if (isset($_SESSION['role'])) {
       <a class="p-2 text-dark" href="#">Locate Us</a>
       <a class="p-2 text-dark" href="#">Our Service</a>
     </nav>
-    <a class="btn btn-outline-primary" href="#">Log In</a>
+    <a class="btn btn-outline-primary" href="signup.php">Register Now</a>
   </div>
 
   <div class="container" style="padding-top: 10rem;">
@@ -134,8 +134,6 @@ if (isset($_SESSION['role'])) {
 
                   <button type="submit" name="login" id="sign_in" class="btn btn-outline-primary btn-lg btn-block">Sign
                     In</button>
-
-                  <button type="submit" name="booking" id="book_now" class="btn btn-outline-primary btn-lg btn-block">Book Now</button>
                 </form>
               </div>
             </div>

@@ -4,7 +4,7 @@
     include('config/db.php');
 
     // Swiftmailer lib
-    require_once './lib/vendor/autoload.php';
+    require_once 'lib/vendor/autoload.php';
     
     // Error & success messages
     global $success_msg, $email_exist, $f_NameErr, $l_NameErr, $_emailErr, $_mobileErr, $_passwordErr;
@@ -103,7 +103,7 @@
                         // Create the Transport
                         $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
                         ->setUsername('devusercuba@gmail.com')
-                        ->setPassword('cubauserdev123');
+                        ->setPassword('devusercuba123');
 
                         // Create the Mailer using your created Transport
                         $mailer = new Swift_Mailer($transport);

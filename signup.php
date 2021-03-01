@@ -15,8 +15,6 @@
 </head>
 
 <body>
-   
-   <?php include('./header.php'); ?>
 
     <div class="App">
         <div class="vertical-center">
